@@ -22,11 +22,13 @@ public class MemoryMemberRepositoryTest {
         Member member = new Member();
         member.setName("spring");
 
+
         //when
         repository.save(member);
 
         //then
         Member result = repository.findById(member.getId()).get();
+        System.out.println(result);
         assertThat(result).isEqualTo(member);
     }
 
