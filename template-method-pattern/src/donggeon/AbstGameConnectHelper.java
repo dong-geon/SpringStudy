@@ -1,3 +1,5 @@
+package donggeon;
+
 // Abstract Class
 public abstract class AbstGameConnectHelper {
 
@@ -24,6 +26,8 @@ public abstract class AbstGameConnectHelper {
         int i = authorization(userName);
 
         switch (i){
+            case -1: //
+                throw new Error("shut down");
             case 0: // 매니저
                 break;
             case 1: // 유로회원

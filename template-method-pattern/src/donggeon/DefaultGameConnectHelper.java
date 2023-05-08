@@ -1,8 +1,10 @@
+package donggeon;
+
 // Concrete Class
 public class DefaultGameConnectHelper extends AbstGameConnectHelper{
     @Override
     protected String doSecurity(String str) {
-        System.out.println("decode");
+        System.out.println("use upgrade decode");
         return "decode";
     }
 
@@ -15,6 +17,7 @@ public class DefaultGameConnectHelper extends AbstGameConnectHelper{
     @Override
     protected int authorization(String userName) {
         System.out.println("authorization check");
+        // 셧다운제 적용 (성인 및 시간 확인)
         return 0;
     }
 
