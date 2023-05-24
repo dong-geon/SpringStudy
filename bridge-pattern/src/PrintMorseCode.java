@@ -1,4 +1,7 @@
 public class PrintMorseCode extends MorseCode{
+    public PrintMorseCode(MorseCodeFunction function) {
+        super(function);
+    }
     //donggeon
     public PrintMorseCode d(){
         dash();dot();dot();space();
