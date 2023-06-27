@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 public class JdbcMemberRepository implements MemberRepository {
+
     private final DataSource dataSource;
+
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
     @Override
     public Member save(Member member) {
         String sql = "insert into member(name) values(?)";
@@ -19,12 +22,11 @@ public class JdbcMemberRepository implements MemberRepository {
         ResultSet rs = null;
         try {
             conn = getConnection();
-            pstmt = conn.prepareStatement(sql,
-                    Statement.RETURN_GENERATED_KEYS);
+            pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, member.getName());
             pstmt.executeUpdate();
             rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
+            if (rs.next()) { // 값이 있으면
                 member.setId(rs.getLong(1));
             } else {
                 throw new SQLException("id 조회 실패");

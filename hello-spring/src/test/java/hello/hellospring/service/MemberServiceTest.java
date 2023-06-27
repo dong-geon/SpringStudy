@@ -49,10 +49,11 @@ class MemberServiceTest {
         member2.setName("spring");
 
         //when
-        memberService.join(member1);
-        IllegalStateException e = assertThrows(IllegalStateException.class,
-                () -> memberService.join(member2));
+        memberService.join(member1); // 성공
 
-        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+        IllegalStateException e = assertThrows(IllegalStateException.class, // 예외처리 테스트
+                () -> memberService.join(member2)); // 중복 검증 try catch도 가능하다 but 애매하므로 assertThrows 이용
+
+        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다."); //service 로직에서의 예외메세지와 같은가?
     }
 }

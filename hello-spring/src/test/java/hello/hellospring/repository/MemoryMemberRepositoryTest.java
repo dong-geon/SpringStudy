@@ -22,15 +22,31 @@ public class MemoryMemberRepositoryTest {
         Member member = new Member();
         member.setName("spring");
 
-
         //when
         repository.save(member);
 
         //then
         Member result = repository.findById(member.getId()).get();
-        System.out.println(result);
-        assertThat(result).isEqualTo(member);
+        assertThat(member).isEqualTo(result);
     }
+    @Test
+    public void findById() {
+        // given
+        Member member1 = new Member();
+        member1.setName("John");
+        repository.save(member1);
+
+        Member member2 = new Member();
+        member2.setName("Jane");
+        repository.save(member2);
+
+        // when
+        Member foundMember = repository.findById(member1.getId()).get();
+
+        // then
+        assertThat(foundMember).isEqualTo(member1);
+    }
+
 
     @Test
     public void findByName(){

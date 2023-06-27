@@ -14,7 +14,6 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
@@ -32,11 +31,11 @@ public class MemberService {
                 });
     }
 
-    public List<Member> findMembers(){
+    public List<Member> findMembers(){ // 전체 회원 조회
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findOne(Long memberId){
+    public Optional<Member> findOne(Long memberId){ // 회원 조회
         return memberRepository.findById(memberId);
     }
 }
